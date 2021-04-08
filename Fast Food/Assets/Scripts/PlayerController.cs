@@ -9,76 +9,65 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // Lane vectors
-    private Vector3 leftLane = new Vector3(-7, 0, 0);
-    private Vector3 rightLane = new Vector3(7, 0, 0);
-    private Vector3 centerLane = new Vector3(0, 0, 0);
-    public Vector3 currentLane;
+    // Lane reference
+    public Lane currentLane;
     public float laneChangeTime;
 
+    //moving stuff
     private bool jumping;
     private bool transitioning;
     
 
     private void Awake()
     {
-        currentLane = centerLane;
         jumping = transitioning = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        // try to go left if possible
         if (Input.GetKeyDown(KeyCode.A) && !transitioning)
         {
-            Debug.Log("A pressed while not transitioning");
-
-            if (currentLane.Equals(centerLane))
+            if (currentLane.HasLeftLane())
             {
                 transitioning = true;
-                StartCoroutine(ChangeLane(currentLane, leftLane));
-            }
-            else if (currentLane.Equals(rightLane))
-            {
-                transitioning = true;
-                StartCoroutine(ChangeLane(currentLane, centerLane));
+                currentLane = currentLane.GetLeftLane();
+                StartCoroutine(ChangeLane());
             }
             else
-                Debug.Log("Too far left");
+                Debug.Log("No left lane!");
+
         }
+        // try to go right if possible
         else if (Input.GetKeyDown(KeyCode.D) && !transitioning)
         {
-            Debug.Log("D pressed while not transitioning");
-
-            if (currentLane.Equals(centerLane))
+            if (currentLane.HasRightLane())
             {
                 transitioning = true;
-                StartCoroutine(ChangeLane(currentLane, rightLane));
-            }
-            else if (currentLane.Equals(leftLane))
-            {
-                transitioning = true;
-                StartCoroutine(ChangeLane(currentLane, centerLane));
+                currentLane = currentLane.GetRightLane();
+                StartCoroutine(ChangeLane());
             }
             else
-                Debug.Log("Too far right");
+                Debug.Log("No right lane!");
         }
     }
 
 
-    IEnumerator ChangeLane(Vector3 lane, Vector3 newLane)
+    IEnumerator ChangeLane()
     {
         float elapsedTime = 0;
-        Vector3 temp = lane;
+
+        Vector3 cLane = transform.position;
+        Vector3 nLane = new Vector3(currentLane.transform.position.x, transform.position.y, transform.position.z);
         
         while(elapsedTime < laneChangeTime)
         {
             elapsedTime += Time.deltaTime;
-            transform.position = Vector3.Lerp(temp, newLane, elapsedTime / laneChangeTime);
+            transform.position = Vector3.Lerp(cLane, nLane, elapsedTime / laneChangeTime);
             yield return null;
         }
-        transform.position = newLane;
-        currentLane = newLane;
+        transform.position = nLane;
         transitioning = false;
     }
 
