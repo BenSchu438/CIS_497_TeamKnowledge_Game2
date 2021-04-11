@@ -9,14 +9,30 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    private bool transitioning;
+
     // Lane reference
-    public Lane currentLane;
+    [Header("Movement Values")]
     public float laneChangeTime;
+    public Lane currentLane;
+    [Space(5)]
 
     //moving stuff
-    private bool jumping;
-    private bool transitioning;
-    
+    public static bool jumping;
+    [Header("Jumping Values")]
+    public float jumpTransitionTime;
+    public float jumpDuration;
+    public float jumpHeight;
+    [Space(5)]
+
+    public static bool sliding;
+    [Header("Sliding Values")]
+    public float slideTransitionTime;
+    public float slideDuration;
+    public float slideHeight;
+
+
+
 
     private void Awake()
     {
@@ -26,33 +42,49 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // try to go left if possible
-        if (Input.GetKeyDown(KeyCode.A) && !transitioning)
+        // go left if possible
+        if (Input.GetKeyDown(KeyCode.A) && !jumping && !transitioning && !sliding)
         {
             if (currentLane.HasLeftLane())
-            {
-                transitioning = true;
-                currentLane = currentLane.GetLeftLane();
-                StartCoroutine(ChangeLane());
-            }
+                ChangeLane("Left");
             else
                 Debug.Log("No left lane!");
-
         }
-        // try to go right if possible
-        else if (Input.GetKeyDown(KeyCode.D) && !transitioning)
+        // go right if possible
+        else if (Input.GetKeyDown(KeyCode.D) && !jumping && !transitioning && !sliding)
         {
             if (currentLane.HasRightLane())
-            {
-                transitioning = true;
-                currentLane = currentLane.GetRightLane();
-                StartCoroutine(ChangeLane());
-            }
+                ChangeLane("Right");
             else
                 Debug.Log("No right lane!");
         }
+        // jump if possible
+        else if(Input.GetKeyDown(KeyCode.W) && !jumping && !transitioning && !sliding)
+        {
+            StartCoroutine(Jump());
+        }
+        // slide if possible
+        else if (Input.GetKeyDown(KeyCode.S) && !jumping && !transitioning && !sliding)
+        {
+            StartCoroutine(Slide());
+        }
     }
 
+    public void ChangeLane(string direction)
+    {
+        if(direction == "Left")
+        {
+            transitioning = true;
+            currentLane = currentLane.GetLeftLane();
+            StartCoroutine(ChangeLane());
+        }
+        else if (direction == "Right")
+        {
+            transitioning = true;
+            currentLane = currentLane.GetRightLane();
+            StartCoroutine(ChangeLane());
+        }
+    }
 
     IEnumerator ChangeLane()
     {
@@ -69,6 +101,73 @@ public class PlayerController : MonoBehaviour
         }
         transform.position = nLane;
         transitioning = false;
+    }
+    IEnumerator Jump()
+    {
+        // values
+        jumping = true;
+        Vector3 startPos = transform.position;
+        Vector3 jumpPos = new Vector3(transform.position.x, transform.position.y + jumpHeight, transform.position.z);
+
+        // jump in air
+        float elapsedTime = 0;
+        while(elapsedTime < jumpTransitionTime)
+        {
+            elapsedTime += Time.deltaTime;
+            transform.position = Vector3.Lerp(startPos, jumpPos, elapsedTime / jumpTransitionTime);
+            yield return null;
+        }
+        transform.position = jumpPos;
+
+        // air time
+        yield return new WaitForSeconds(jumpDuration);
+
+        // fall to ground
+        elapsedTime = 0;
+        while (elapsedTime < jumpTransitionTime)
+        {
+            elapsedTime += Time.deltaTime;
+            transform.position = Vector3.Lerp(jumpPos, startPos, elapsedTime / jumpTransitionTime);
+            yield return null;
+        }
+        transform.position = startPos;
+
+        // finish jump
+        jumping = false;
+    }
+
+    IEnumerator Slide()
+    {
+        // values
+        sliding = true;
+        Vector3 startPos = transform.position;
+        Vector3 slidePos = new Vector3(transform.position.x, transform.position.y - slideHeight, transform.position.z);
+
+        // jump in air
+        float elapsedTime = 0;
+        while (elapsedTime < slideTransitionTime)
+        {
+            elapsedTime += Time.deltaTime;
+            transform.position = Vector3.Lerp(startPos, slidePos, elapsedTime / slideTransitionTime);
+            yield return null;
+        }
+        transform.position = slidePos;
+
+        // air time
+        yield return new WaitForSeconds(slideDuration);
+
+        // fall to ground
+        elapsedTime = 0;
+        while (elapsedTime < slideTransitionTime)
+        {
+            elapsedTime += Time.deltaTime;
+            transform.position = Vector3.Lerp(slidePos, startPos, elapsedTime / slideTransitionTime);
+            yield return null;
+        }
+        transform.position = startPos;
+
+        // finish jump
+        sliding = false;
     }
 
 }

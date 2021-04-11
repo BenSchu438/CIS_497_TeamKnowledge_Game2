@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MovingRoad : MonoBehaviour
 {
-    public string tag;
+    public string poolTag;
     public float speed;
     public float requeueZ;
     public float lanePos;
@@ -16,7 +16,7 @@ public class MovingRoad : MonoBehaviour
 
         if(transform.position.z <= requeueZ)
         {
-            RoadPooler.instance.ResetRoadFromPool(tag, lanePos);
+            RoadPooler.instance.ResetRoadFromPool(poolTag, lanePos);
         }
     }
 }
