@@ -186,6 +186,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2457971254353458744}
   - component: {fileID: 2457971254353458745}
+  - component: {fileID: 7659806065994444516}
   m_Layer: 5
   m_Name: Health Slider
   m_TagString: Untagged
@@ -265,6 +266,19 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7659806065994444516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2457971254353458747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e07d5e5b9ba8c5429148c5a606bca91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 2457971254353458747}
 --- !u!1 &2457971255408404090
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,6 +514,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5778443832492715257}
   - component: {fileID: 6891942140575778061}
+  - component: {fileID: 8469538187497623034}
   m_Layer: 5
   m_Name: Energy Slider
   m_TagString: Untagged
@@ -579,3 +594,16 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8469538187497623034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5154876002143916500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acdd9532941d34e4fac40517b546a519, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  staminaBar: {fileID: 5154876002143916500}
