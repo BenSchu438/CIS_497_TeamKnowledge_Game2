@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
     public float slideDuration;
     public float slideHeight;
 
-
+    public GameManager gm;
 
 
     private void Awake()
@@ -169,5 +169,11 @@ public class PlayerController : MonoBehaviour
         // finish jump
         sliding = false;
     }
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Obstacle")
+        {
+            gm.gameOver = true;
+        }
+    }
 }
