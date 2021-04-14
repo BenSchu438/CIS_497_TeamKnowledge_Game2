@@ -19,6 +19,7 @@ public class StaminaBar : MonoBehaviour
         if (staminaBar.value == 0)
         {
             Debug.Log("Game Over");
+            GameManager.gameOver = true;
         }
     }
 }

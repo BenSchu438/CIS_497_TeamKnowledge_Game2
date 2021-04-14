@@ -12,7 +12,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public bool gameOver = false;
+    public static bool gameOver = false;
 
     private void Start()
     {
