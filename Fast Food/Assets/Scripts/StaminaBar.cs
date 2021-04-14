@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class StaminaBar : MonoBehaviour
 {
-    public GameObject staminaBar;
+    public Slider staminaBar;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +15,8 @@ public class StaminaBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (staminaBar.GetComponent<Slider>().value == 0)
+        staminaBar.value -= Time.deltaTime;
+        if (staminaBar.value == 0)
         {
             Debug.Log("Game Over");
         }

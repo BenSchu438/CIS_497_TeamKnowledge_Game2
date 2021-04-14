@@ -427,6 +427,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 389095298}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &435736329 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6891942140575778061, guid: 185f26301ea92ff499cf23bf2fa0c7b3, type: 3}
+  m_PrefabInstance: {fileID: 1399833320}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &488569537
 GameObject:
   m_ObjectHideFlags: 0
@@ -1126,6 +1137,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Basic UI
       objectReference: {fileID: 0}
+    - target: {fileID: 2457971254353458745, guid: 185f26301ea92ff499cf23bf2fa0c7b3, type: 3}
+      propertyPath: m_Value
+      value: 50.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2457971254353458745, guid: 185f26301ea92ff499cf23bf2fa0c7b3, type: 3}
+      propertyPath: m_MaxValue
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 2457971255408404091, guid: 185f26301ea92ff499cf23bf2fa0c7b3, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1142,8 +1161,35 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6891942140575778061, guid: 185f26301ea92ff499cf23bf2fa0c7b3, type: 3}
+      propertyPath: m_Value
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6891942140575778061, guid: 185f26301ea92ff499cf23bf2fa0c7b3, type: 3}
+      propertyPath: m_MaxValue
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7659806065994444516, guid: 185f26301ea92ff499cf23bf2fa0c7b3, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 1438198148}
+    - target: {fileID: 8469538187497623034, guid: 185f26301ea92ff499cf23bf2fa0c7b3, type: 3}
+      propertyPath: staminaBar
+      value: 
+      objectReference: {fileID: 435736329}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 185f26301ea92ff499cf23bf2fa0c7b3, type: 3}
+--- !u!114 &1438198148 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2457971254353458745, guid: 185f26301ea92ff499cf23bf2fa0c7b3, type: 3}
+  m_PrefabInstance: {fileID: 1399833320}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1899025092
 GameObject:
   m_ObjectHideFlags: 0
