@@ -9,171 +9,100 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private bool transitioning;
-
     // Lane reference
     [Header("Movement Values")]
     public float laneChangeTime;
     public Lane currentLane;
     [Space(5)]
 
-    //moving stuff
-    public static bool jumping;
+    // moving stuff
     [Header("Jumping Values")]
-    public float jumpTransitionTime;
-    public float jumpDuration;
-    public float jumpHeight;
+    public float jumpForce;
+    public float gravityModifier;
     [Space(5)]
 
     public static bool sliding;
+
     [Header("Sliding Values")]
-    public float slideTransitionTime;
     public float slideDuration;
     public float slideHeight;
+    public Material defMat;
+    public Material slideIndic;
+
+    [SerializeField] public IState currentState;
+    public IState running;
+    public IState trans;
+    public IState slide;
+    public IState jump;
 
     public GameManager gm;
-
+    public Rigidbody playerRb;
 
     private void Awake()
     {
-        jumping = transitioning = false;
+        playerRb = this.gameObject.GetComponent<Rigidbody>();
+
+        if (Physics.gravity.y > -10)
+            Physics.gravity *= gravityModifier;
+
+        // set state stuff
+        running = GetComponent<Running>();
+        trans = GetComponent<Transitioning>();
+        slide = GetComponent<Sliding>();
+        jump = GetComponent<Jumping>();
+        currentState = running;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // go left if possible
-        if (Input.GetKeyDown(KeyCode.A) && !jumping && !transitioning && !sliding)
+        // go left if possible w/ a
+        if (Input.GetKeyDown(KeyCode.A))
         {
             if (currentLane.HasLeftLane())
-                ChangeLane("Left");
+            {
+                currentState.ChangeLane("Left");
+            }
             else
                 Debug.Log("No left lane!");
         }
-        // go right if possible
-        else if (Input.GetKeyDown(KeyCode.D) && !jumping && !transitioning && !sliding)
+        // go right if possible w/ d
+        else if (Input.GetKeyDown(KeyCode.D))
         {
             if (currentLane.HasRightLane())
-                ChangeLane("Right");
+            {
+                currentState.ChangeLane("Right");
+            }
+                
             else
                 Debug.Log("No right lane!");
         }
-        // jump if possible
-        else if(Input.GetKeyDown(KeyCode.W) && !jumping && !transitioning && !sliding)
+        // jump if possible w/ w or space
+        else if((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space)))
         {
-            StartCoroutine(Jump());
+            currentState.Jump();
         }
-        // slide if possible
-        else if (Input.GetKeyDown(KeyCode.S) && !jumping && !transitioning && !sliding)
+        // slide if possiblew/ s or left control
+        else if ((Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.LeftControl)))
         {
-            StartCoroutine(Slide());
-        }
-    }
-
-    public void ChangeLane(string direction)
-    {
-        if(direction == "Left")
-        {
-            transitioning = true;
-            currentLane = currentLane.GetLeftLane();
-            StartCoroutine(ChangeLane());
-        }
-        else if (direction == "Right")
-        {
-            transitioning = true;
-            currentLane = currentLane.GetRightLane();
-            StartCoroutine(ChangeLane());
+            currentState.Slide();
         }
     }
 
-    IEnumerator ChangeLane()
-    {
-        float elapsedTime = 0;
-
-        Vector3 cLane = transform.position;
-        Vector3 nLane = new Vector3(currentLane.transform.position.x, transform.position.y, transform.position.z);
-        
-        while(elapsedTime < laneChangeTime)
-        {
-            elapsedTime += Time.deltaTime;
-            transform.position = Vector3.Lerp(cLane, nLane, elapsedTime / laneChangeTime);
-            yield return null;
-        }
-        transform.position = nLane;
-        transitioning = false;
-    }
-    IEnumerator Jump()
-    {
-        // values
-        jumping = true;
-        Vector3 startPos = transform.position;
-        Vector3 jumpPos = new Vector3(transform.position.x, transform.position.y + jumpHeight, transform.position.z);
-
-        // jump in air
-        float elapsedTime = 0;
-        while(elapsedTime < jumpTransitionTime)
-        {
-            elapsedTime += Time.deltaTime;
-            transform.position = Vector3.Lerp(startPos, jumpPos, elapsedTime / jumpTransitionTime);
-            yield return null;
-        }
-        transform.position = jumpPos;
-
-        // air time
-        yield return new WaitForSeconds(jumpDuration);
-
-        // fall to ground
-        elapsedTime = 0;
-        while (elapsedTime < jumpTransitionTime)
-        {
-            elapsedTime += Time.deltaTime;
-            transform.position = Vector3.Lerp(jumpPos, startPos, elapsedTime / jumpTransitionTime);
-            yield return null;
-        }
-        transform.position = startPos;
-
-        // finish jump
-        jumping = false;
-    }
-
-    IEnumerator Slide()
-    {
-        // values
-        sliding = true;
-        Vector3 startPos = transform.position;
-        Vector3 slidePos = new Vector3(transform.position.x, transform.position.y - slideHeight, transform.position.z);
-
-        // jump in air
-        float elapsedTime = 0;
-        while (elapsedTime < slideTransitionTime)
-        {
-            elapsedTime += Time.deltaTime;
-            transform.position = Vector3.Lerp(startPos, slidePos, elapsedTime / slideTransitionTime);
-            yield return null;
-        }
-        transform.position = slidePos;
-
-        // air time
-        yield return new WaitForSeconds(slideDuration);
-
-        // fall to ground
-        elapsedTime = 0;
-        while (elapsedTime < slideTransitionTime)
-        {
-            elapsedTime += Time.deltaTime;
-            transform.position = Vector3.Lerp(slidePos, startPos, elapsedTime / slideTransitionTime);
-            yield return null;
-        }
-        transform.position = startPos;
-
-        // finish jump
-        sliding = false;
-    }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Obstacle")
+        if (other.CompareTag("Obstacle"))
         {
-            gm.gameOver = true;
+            GameManager.gameOver = true;
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground") && currentState == jump)
+        {
+            currentState = running;
+        }
+            
     }
 }

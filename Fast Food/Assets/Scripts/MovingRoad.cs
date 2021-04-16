@@ -5,14 +5,14 @@ using UnityEngine;
 public class MovingRoad : MonoBehaviour
 {
     public string poolTag;
-    public float speed;
+    //public float speed;
     public float requeueZ;
     public float lanePos;
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(transform.forward * speed * Time.deltaTime);
+        transform.Translate(transform.forward * GameManager.speed * -1 * Time.deltaTime);
 
         if(transform.position.z <= requeueZ)
         {

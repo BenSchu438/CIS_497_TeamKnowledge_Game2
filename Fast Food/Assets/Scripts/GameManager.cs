@@ -13,11 +13,14 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static bool gameOver = false;
+    public float gameSpeed;
+    public static float speed;
 
     private void Start()
     {
         Time.timeScale = 1f;
         gameOver = false;
+        speed = gameSpeed;
     }
 
     public void FixedUpdate()
