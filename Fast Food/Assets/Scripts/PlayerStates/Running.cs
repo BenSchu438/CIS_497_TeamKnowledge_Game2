@@ -65,7 +65,7 @@ public class Running : MonoBehaviour, IState
         {
             GetComponent<Renderer>().material = p.defMat;
             transform.localScale += new Vector3(0, p.slideHeight, 0);
-            transform.position = new Vector3(0, 1f, 0);
+            transform.position = new Vector3(transform.position.x, 1f, transform.position.z);
             //rb.velocity = new Vector3(0, 0, 0);
             p.currentState = p.running;
         }

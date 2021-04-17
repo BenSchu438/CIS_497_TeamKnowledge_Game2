@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void resartButtonClick()
+    public void ResartButtonClick()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }

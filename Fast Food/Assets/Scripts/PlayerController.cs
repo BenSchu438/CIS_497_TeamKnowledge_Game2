@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         // go left if possible w/ a
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKey(KeyCode.A))
         {
             if (currentLane.HasLeftLane())
             {
@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("No left lane!");
         }
         // go right if possible w/ d
-        else if (Input.GetKeyDown(KeyCode.D))
+        else if (Input.GetKey(KeyCode.D))
         {
             if (currentLane.HasRightLane())
             {
@@ -78,12 +78,12 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("No right lane!");
         }
         // jump if possible w/ w or space
-        else if((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space)))
+        else if((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space)))
         {
             currentState.Jump();
         }
         // slide if possiblew/ s or left control
-        else if ((Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.LeftControl)))
+        else if ((Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.LeftControl)))
         {
             currentState.Slide();
         }
