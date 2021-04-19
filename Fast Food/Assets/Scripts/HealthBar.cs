@@ -23,4 +23,14 @@ public class HealthBar : MonoBehaviour
             GameManager.gameOver = true;
         }   
     }
+
+    public void HealthDrop()
+    {
+        healthBar.value -= 20;
+    }
+
+    public void HealthRestore()
+    {
+        healthBar.value += 5;
+    }
 }

@@ -22,4 +22,14 @@ public class StaminaBar : MonoBehaviour
             GameManager.gameOver = true;
         }
     }
+
+    public void SmallEnergyRestore()
+    {
+        staminaBar.value += 10;
+    }
+
+    public void LargeEnergyRestore()
+    {
+        staminaBar.value += 20;
+    }
 }

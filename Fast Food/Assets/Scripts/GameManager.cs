@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void ResartButtonClick()
+    public void RestartButtonClick()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
@@ -41,5 +41,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("game over screen to be added");
     }
+
+    
 
 }
