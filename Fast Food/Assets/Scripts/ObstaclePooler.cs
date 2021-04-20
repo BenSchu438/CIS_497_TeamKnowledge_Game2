@@ -7,6 +7,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ObstaclePooler : MonoBehaviour
 {
@@ -31,6 +32,9 @@ public class ObstaclePooler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(GameManager.CurrentLevelName));
+
+
         poolDictionary = new Dictionary<string, Queue<GameObject>>();
 
         foreach (Pool pool in pools)
@@ -55,7 +59,26 @@ public class ObstaclePooler : MonoBehaviour
         GameObject objectToSpawn = poolDictionary[tag].Dequeue();
 
         objectToSpawn.SetActive(true);
-        objectToSpawn.transform.position = position;
+
+        // randomly have high and low obstalcles
+        Vector3 nextPos;
+
+        if (Random.Range(0, 3) < 2)
+        {
+            // basic ground obstacle
+            nextPos = new Vector3(position.x, 0.6f, position.z);
+            objectToSpawn.transform.localScale = new Vector3(12, 1, 1);
+        }
+            
+        else
+        {
+            // basic floating obstacle
+            nextPos = new Vector3(position.x, 3.5f, position.z);
+            objectToSpawn.transform.localScale = new Vector3(12, 4, 1);
+        }
+            
+
+        objectToSpawn.transform.position = nextPos;
         objectToSpawn.transform.rotation = rotation;
 
         poolDictionary[tag].Enqueue(objectToSpawn);

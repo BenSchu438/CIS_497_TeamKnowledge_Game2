@@ -20,7 +20,7 @@ public class BackgroundThemes : MonoBehaviour, IObserver
 
     private void Update()
     {
-        transform.Translate(transform.forward * -1  * GameManager.speed * Time.deltaTime);
+        transform.Translate(transform.forward * -1  * GameManager.instance.speed * Time.deltaTime);
 
         if (transform.position.z < offScreen)
             ResetObject();
