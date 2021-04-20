@@ -12,23 +12,36 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static bool gameOver = false;
     public float gameSpeed;
     public static float speed;
+    public GameObject pauseMenu;
+    public GameObject gameOverMenu;
+
+    //singleton
+    #region 
+    public static GameManager instance;
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
+    #endregion
 
     private void Start()
     {
         Time.timeScale = 1f;
-        gameOver = false;
+        
         speed = gameSpeed;
     }
 
     public void FixedUpdate()
     {
-        if(gameOver)
+        
+        if (Input.GetKeyDown(KeyCode.P))
         {
-            Time.timeScale = 0f;
-            ActivateGameOverScreen();
+            Pause();
         }
     }
 
@@ -39,9 +52,19 @@ public class GameManager : MonoBehaviour
 
     public void ActivateGameOverScreen()
     {
-        Debug.Log("game over screen to be added");
+        Time.timeScale = 0f;
+        gameOverMenu.SetActive(true);
     }
 
-    
+    public void Pause()
+    {
+        Time.timeScale = 0f;
+        pauseMenu.SetActive(true);
+    }
+    public void Unpause()
+    {
+        Time.timeScale = 1f;
+        pauseMenu.SetActive(false);
+    }
 
 }

@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Obstacle"))
         {
-            GameManager.gameOver = true;
+            GameManager.instance.ActivateGameOverScreen();
         }
     }
 

@@ -2251,6 +2251,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Basic UI
       objectReference: {fileID: 0}
+    - target: {fileID: 2457971253630811384, guid: 185f26301ea92ff499cf23bf2fa0c7b3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2457971255408404091, guid: 185f26301ea92ff499cf23bf2fa0c7b3, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -2259,12 +2263,32 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3055533000798357876, guid: 185f26301ea92ff499cf23bf2fa0c7b3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055533000798357876, guid: 185f26301ea92ff499cf23bf2fa0c7b3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestartButtonClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055533000798357876, guid: 185f26301ea92ff499cf23bf2fa0c7b3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 3311126975745764966, guid: 185f26301ea92ff499cf23bf2fa0c7b3, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3311126975745764966, guid: 185f26301ea92ff499cf23bf2fa0c7b3, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4066905046515242971, guid: 185f26301ea92ff499cf23bf2fa0c7b3, type: 3}
+      propertyPath: m_Name
+      value: IntroText
+      objectReference: {fileID: 0}
+    - target: {fileID: 4504266970928298984, guid: 185f26301ea92ff499cf23bf2fa0c7b3, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
