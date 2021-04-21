@@ -20,7 +20,7 @@ public class HealthBar : MonoBehaviour
         if (healthBar.value == 0)
         {
             Debug.Log("Game Over");
-            GameManager.instance.ActivateGameOverScreen();
+            GameManager.instance.GameOver();
         }   
     }
 
