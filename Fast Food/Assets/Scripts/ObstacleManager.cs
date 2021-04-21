@@ -12,6 +12,6 @@ public class ObstacleManager : MonoBehaviour
 {
     private void FixedUpdate()
     {
-        transform.Translate(transform.forward * GameManager.speed * -1 * Time.deltaTime);
+        transform.Translate(transform.forward * GameManager.instance.speed * -1 * Time.deltaTime);
     }
 }

@@ -1,8 +1,7 @@
-﻿/* * Logan Ross 
- * * GameManger.cs 
- * * Assignment 10
- * * spawns obstacles and checks for game over
- * */
+﻿/* Team Knowledge 
+ * Spring 2021 Group Game 2
+ * Singleton Game Manager
+ */
 
 using System.Collections;
 using System.Collections.Generic;
@@ -12,59 +11,105 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public float gameSpeed;
-    public static float speed;
     public GameObject pauseMenu;
-    public GameObject gameOverMenu;
+    public GameObject gameOverScreen;
 
-    //singleton
-    #region 
+
+    public bool gameOver = false;
+    public bool isPaused;
+    public float speed;
+    public int score;
+
     public static GameManager instance;
+    public static string CurrentLevelName = "MainMenu";
+
+
+    // create singleton instance
     private void Awake()
     {
         if (instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+            Debug.LogError("Trying to instantiate second singleton");
         }
     }
-    #endregion
 
-    private void Start()
+    private void Update()
     {
-        Time.timeScale = 1f;
-        
-        speed = gameSpeed;
-    }
-
-    public void FixedUpdate()
-    {
-        
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.Tab) && !isPaused && !gameOver)
         {
             Pause();
         }
+        else if (Input.GetKeyDown(KeyCode.Tab) && isPaused && !gameOver)
+        {
+            UnPause();
+        }
     }
 
-    public void RestartButtonClick()
+    //load and unload levels
+    public void LoadLevel(string levelName)
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
+        gameOver = false;
+        score = 0;
+        gameOverScreen.SetActive(false);
 
-    public void ActivateGameOverScreen()
+        AsyncOperation ao = SceneManager.LoadSceneAsync(levelName, LoadSceneMode.Additive);
+        if (ao == null)
+        {
+            Debug.LogError("[GameManager] Unable to load: " + levelName);
+            return;
+        }
+        CurrentLevelName = levelName;
+
+        UnPause();
+    }
+    public void UnloadCurrentLevel()
     {
-        Time.timeScale = 0f;
-        gameOverMenu.SetActive(true);
+        gameOverScreen.SetActive(false);
+        AsyncOperation ao = SceneManager.UnloadSceneAsync(CurrentLevelName);
+
+        if (ao == null)
+        {
+            Debug.LogError("[GameManager] Unable to unload: " + CurrentLevelName);
+        }
+        CurrentLevelName = "MainMenu";
+
+        UnPause();
+    }
+    public void ReloadCurrentLevel()
+    {
+        AsyncOperation ao = SceneManager.UnloadSceneAsync(CurrentLevelName);
+        if (ao == null)
+        {
+            Debug.LogError("[GameManager] Unable to unload: " + CurrentLevelName);
+        }
+        LoadLevel(CurrentLevelName);
     }
 
+    //pausing and unpausing
     public void Pause()
     {
         Time.timeScale = 0f;
         pauseMenu.SetActive(true);
+        isPaused = true;
     }
-    public void Unpause()
+    public void UnPause()
     {
         Time.timeScale = 1f;
         pauseMenu.SetActive(false);
+        isPaused = false;
     }
 
+    // call when game over is triggered
+    public void GameOver()
+    {
+        gameOver = true;
+        Time.timeScale = 0f;
+        gameOverScreen.SetActive(true);
+    }
 }
