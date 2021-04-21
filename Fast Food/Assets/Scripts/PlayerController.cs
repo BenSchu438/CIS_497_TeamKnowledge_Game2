@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         // go left if possible w/ a
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.A))
         {
             if (currentLane.HasLeftLane())
             {
@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("No left lane!");
         }
         // go right if possible w/ d
-        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        else if (Input.GetKey(KeyCode.D))
         {
             if (currentLane.HasRightLane())
             {
@@ -78,12 +78,12 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("No right lane!");
         }
         // jump if possible w/ w or space
-        else if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.UpArrow))
+        else if((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space)))
         {
             currentState.Jump();
         }
         // slide if possiblew/ s or left control
-        else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.DownArrow))
+        else if ((Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.LeftControl)))
         {
             currentState.Slide();
         }
@@ -93,11 +93,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Obstacle"))
         {
-<<<<<<< Updated upstream
             GameManager.instance.ActivateGameOverScreen();
-=======
-            GameManager.instance.GameOver();
->>>>>>> Stashed changes
         }
     }
 

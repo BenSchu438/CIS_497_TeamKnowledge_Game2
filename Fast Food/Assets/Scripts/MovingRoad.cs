@@ -12,7 +12,7 @@ public class MovingRoad : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(transform.forward * GameManager.instance.speed * -1 * Time.deltaTime);
+        transform.Translate(transform.forward * GameManager.speed * -1 * Time.deltaTime);
 
         if(transform.position.z <= requeueZ)
         {

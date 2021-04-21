@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class RoadPooler : MonoBehaviour
 {
@@ -23,8 +22,6 @@ public class RoadPooler : MonoBehaviour
 
     private void Start()
     {
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName(GameManager.CurrentLevelName));
-
         poolDictionary = new Dictionary<string, Queue<GameObject>>();
 
         SpawnRoadPools();

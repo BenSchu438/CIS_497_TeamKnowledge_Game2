@@ -19,11 +19,7 @@ public class StaminaBar : MonoBehaviour
         if (staminaBar.value == 0)
         {
             Debug.Log("Game Over");
-<<<<<<< Updated upstream
             GameManager.instance.ActivateGameOverScreen();
-=======
-            GameManager.instance.GameOver();
->>>>>>> Stashed changes
         }
     }
 

@@ -20,11 +20,7 @@ public class HealthBar : MonoBehaviour
         if (healthBar.value == 0)
         {
             Debug.Log("Game Over");
-<<<<<<< Updated upstream
             GameManager.instance.ActivateGameOverScreen();
-=======
-            GameManager.instance.GameOver();
->>>>>>> Stashed changes
         }   
     }
 
