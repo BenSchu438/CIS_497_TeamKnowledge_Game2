@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
     public Slider healthBar;
+    public int damage;
 
     // Start is called before the first frame update
     void Start()
@@ -14,19 +15,20 @@ public class HealthBar : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        healthBar.value += Time.deltaTime;
-        if (healthBar.value == 0)
+        if (healthBar.value <= 0)
         {
             Debug.Log("Game Over");
             GameManager.instance.GameOver();
-        }   
+        }
+        
+        healthBar.value += Time.deltaTime;
     }
 
     public void HealthDrop()
     {
-        healthBar.value -= 20;
+        healthBar.value -= damage;
     }
 
     public void HealthRestore()

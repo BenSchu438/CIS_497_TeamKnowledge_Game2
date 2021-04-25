@@ -29,13 +29,16 @@ public class PlayerController : MonoBehaviour
     public Material defMat;
     public Material slideIndic;
 
+    [Header("Healthbar Ref")]
+    public HealthBar health;
+    [Space(5)]
+
     [SerializeField] public IState currentState;
     public IState running;
     public IState trans;
     public IState slide;
     public IState jump;
 
-    public GameManager gm;
     public Rigidbody playerRb;
 
     private void Awake()
@@ -63,8 +66,8 @@ public class PlayerController : MonoBehaviour
             {
                 currentState.ChangeLane("Left");
             }
-            else
-                Debug.Log("No left lane!");
+            //else
+            //    Debug.Log("No left lane!");
         }
         // go right if possible w/ d
         else if (Input.GetKey(KeyCode.D))
@@ -74,8 +77,8 @@ public class PlayerController : MonoBehaviour
                 currentState.ChangeLane("Right");
             }
                 
-            else
-                Debug.Log("No right lane!");
+            //else
+            //    Debug.Log("No right lane!");
         }
         // jump if possible w/ w or space
         else if((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space)))
@@ -93,7 +96,8 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Obstacle"))
         {
-            GameManager.instance.GameOver();
+            Debug.Log("Hit Obstacle");
+            health.HealthDrop();
         }
     }
 

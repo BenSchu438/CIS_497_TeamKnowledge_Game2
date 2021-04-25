@@ -17,8 +17,13 @@ public class GameManager : MonoBehaviour
 
     public bool gameOver = false;
     public bool isPaused;
-    public float speed;
+    public int speed;
     public int score;
+
+    public int minSpeed;
+    public int maxSpeed;
+
+    public Text finalScore;
 
     public static GameManager instance;
     public static string CurrentLevelName = "MainMenu";
@@ -37,6 +42,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
             Debug.LogError("Trying to instantiate second singleton");
         }
+        speed = minSpeed;
     }
 
     private void Update()
@@ -51,11 +57,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
     //load and unload levels
     public void LoadLevel(string levelName)
     {
         gameOver = false;
-        score = 0;
+        
         gameOverScreen.SetActive(false);
 
         AsyncOperation ao = SceneManager.LoadSceneAsync(levelName, LoadSceneMode.Additive);
@@ -65,9 +72,11 @@ public class GameManager : MonoBehaviour
             return;
         }
         CurrentLevelName = levelName;
-
         UnPause();
+        score = 0;
+        speed = minSpeed;
     }
+
     public void UnloadCurrentLevel()
     {
         gameOverScreen.SetActive(false);
@@ -110,6 +119,7 @@ public class GameManager : MonoBehaviour
     {
         gameOver = true;
         Time.timeScale = 0f;
+        finalScore.text = "Score: " + score;
         gameOverScreen.SetActive(true);
     }
 }

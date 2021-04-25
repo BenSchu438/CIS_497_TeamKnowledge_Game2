@@ -9,7 +9,7 @@ public class Sliding : MonoBehaviour, IState
 
     public void ChangeLane(string direction)
     {
-        Debug.Log("I'm sliding! I can't change lane!");
+        //Debug.Log("I'm sliding! I can't change lane!");
     }
 
     public void Jump()
@@ -28,6 +28,6 @@ public class Sliding : MonoBehaviour, IState
 
     public void Slide()
     {
-        Debug.Log("I'm sliding! I can't slide further!");
+        //Debug.Log("I'm sliding! I can't slide further!");
     }
 }
