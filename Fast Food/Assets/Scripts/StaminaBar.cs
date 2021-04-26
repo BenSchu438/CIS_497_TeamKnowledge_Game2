@@ -32,4 +32,9 @@ public class StaminaBar : MonoBehaviour
     {
         staminaBar.value += 20;
     }
+    public void ChangeStaminaBar(int value)
+    {
+        staminaBar.value += value;
+    }
+
 }

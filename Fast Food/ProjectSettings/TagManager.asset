@@ -10,6 +10,8 @@ TagManager:
   - Super
   - Norm
   - Weak
+  - HealthBar
+  - StaminaBar
   layers:
   - Default
   - TransparentFX

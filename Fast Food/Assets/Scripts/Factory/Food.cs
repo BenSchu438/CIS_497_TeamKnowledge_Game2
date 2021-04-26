@@ -12,15 +12,22 @@ public abstract class Food : MonoBehaviour
     public float zResetPoint;
     public int random;
     public Slider staminaBar;
-    public Slider healthBar;
+    public GameObject healthBar;
+    public HealthBar healthBarScript;
+    public StaminaBar staminaBarScript;
+
 
     private void Awake()
     {
         PrepFood();
+        healthBarScript = GameObject.FindGameObjectWithTag("HealthBar").GetComponent <HealthBar>();
+        staminaBarScript = GameObject.FindGameObjectWithTag("StaminaBar").GetComponent<StaminaBar>();
     }
 
     public void OnTriggerEnter(Collider other)
     {
+        healthBarScript.ChangeHealthBar(healthChange);
+        staminaBarScript.ChangeStaminaBar(staminaIncrease);
         Destroy(this.gameObject);
     }
 

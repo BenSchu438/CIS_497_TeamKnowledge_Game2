@@ -157,8 +157,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -312, y: -234}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -292.94, y: -138.3}
+  m_SizeDelta: {x: 198.12, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &74305585
 MonoBehaviour:
@@ -3766,7 +3766,7 @@ GameObject:
   - component: {fileID: 7659806066742717452}
   m_Layer: 5
   m_Name: Health Slider
-  m_TagString: Untagged
+  m_TagString: HealthBar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3839,7 +3839,7 @@ GameObject:
   - component: {fileID: 8469538188850433810}
   m_Layer: 5
   m_Name: Energy Slider
-  m_TagString: Untagged
+  m_TagString: StaminaBar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

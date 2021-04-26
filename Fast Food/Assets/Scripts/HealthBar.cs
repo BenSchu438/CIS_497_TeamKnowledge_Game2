@@ -35,4 +35,9 @@ public class HealthBar : MonoBehaviour
     {
         healthBar.value += 5;
     }
+
+    public void ChangeHealthBar(int value)
+    {
+        healthBar.value += value;
+    }
 }
