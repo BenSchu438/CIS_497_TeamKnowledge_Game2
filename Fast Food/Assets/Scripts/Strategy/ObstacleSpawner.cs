@@ -1,3 +1,8 @@
+/*
+ * Team Knowledge
+ * SP21 Game 2 [Fast Food]
+ * obstacle spawner
+ */
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -59,12 +64,12 @@ public class ObstacleSpawner : MonoBehaviour
         delay += _delay;
 
         // ensure atleast 1 second delay between objects
-        if (delay < 1.1f)
-            delay = 1.1f;
+        if (delay < 1.25f)
+            delay = 1.25f;
 
         // ensure it can only spawn a max of 5 and min of 4 for balance
         if (minWaveSpawn > 4)
-            minWaveSpawn = 4;
+            minWaveSpawn = 3;
         if (maxWaveSpawn > 5)
             maxWaveSpawn = 5;
     }

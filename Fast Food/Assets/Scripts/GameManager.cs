@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject gameOverScreen;
 
-
     public bool gameOver = false;
     public bool isPaused;
     public int speed;
@@ -62,7 +61,6 @@ public class GameManager : MonoBehaviour
     public void LoadLevel(string levelName)
     {
         gameOver = false;
-        
         gameOverScreen.SetActive(false);
 
         AsyncOperation ao = SceneManager.LoadSceneAsync(levelName, LoadSceneMode.Additive);

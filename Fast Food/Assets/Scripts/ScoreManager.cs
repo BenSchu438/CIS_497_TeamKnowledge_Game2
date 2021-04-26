@@ -10,12 +10,15 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private int speedModifier;
 
     public GameObject obstacleSpawner;
+    public GameObject foodSpawner;
     private ObstacleSpawner obsSpawner;
+    private FoodSpawner fdSpawner;
     private int initialSpeed;
 
     private void Awake()
     {
         obsSpawner = obstacleSpawner.GetComponent<ObstacleSpawner>();
+        fdSpawner = foodSpawner.GetComponent<FoodSpawner>();
         speedModifier = GameManager.instance.speed;
 
         StartCoroutine(ScoreIncrementer());
@@ -42,13 +45,14 @@ public class ScoreManager : MonoBehaviour
                 GameManager.instance.speed = speedModifier;
                 //Debug.Log("Increasing Speed...");
 
-                // every other increment, modify the obstacle delay
+                // every other increment, modify the obstacle/food delay
                 if (difficultyIncrement % 2 == 0)
                 {
                     //Debug.Log("Decreasing time between obstacles...");
                     obsSpawner.SetDifficulty(0, 0, -0.5f);
+                    fdSpawner.ModFoodDelay(-0.5f);
                 }
-                // every third increment, increase the amount of obstacles
+                // every third increment, increase the amount of obstacles spawned
                 if (difficultyIncrement % 3 == 0)
                 {
                     //Debug.Log("Increasing obstacles...");

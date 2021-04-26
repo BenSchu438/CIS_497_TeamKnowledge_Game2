@@ -1,3 +1,8 @@
+/*
+ * Team Knowledge
+ * SP21 Game 2 [Fast Food]
+ * food parent abstract
+ */
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,15 +11,15 @@ using UnityEngine.UI;
 
 public abstract class Food : MonoBehaviour
 {
-    public int staminaIncrease = 10;
-    public int healthChange = 0;
+    protected int staminaIncrease = 10;
+    protected int healthChange = 0;
     public Vector3 spawnPoint;
     public float zResetPoint;
-    public int random;
-    public Slider staminaBar;
-    public GameObject healthBar;
-    public HealthBar healthBarScript;
-    public StaminaBar staminaBarScript;
+    //public int random;
+    private Slider staminaBar;
+    private GameObject healthBar;
+    private HealthBar healthBarScript;
+    private StaminaBar staminaBarScript;
 
 
     private void Awake()

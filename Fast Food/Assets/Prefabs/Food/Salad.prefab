@@ -95,13 +95,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f38f0d465b33514789a084ad68c493d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  staminaIncrease: 7
-  healthChange: 0
   spawnPoint: {x: 0, y: 0, z: 95}
   zResetPoint: -8
-  random: 0
-  staminaBar: {fileID: 0}
-  healthBar: {fileID: 0}
+  stamina: 7
+  health: 10
 --- !u!65 &5917354171564692058
 BoxCollider:
   m_ObjectHideFlags: 0

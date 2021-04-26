@@ -1,3 +1,8 @@
+/*
+ * Team Knowledge
+ * SP21 Game 2 [Fast Food]
+ * General pool object
+ */
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

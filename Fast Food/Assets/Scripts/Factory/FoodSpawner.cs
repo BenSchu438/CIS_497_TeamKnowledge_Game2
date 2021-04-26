@@ -1,3 +1,8 @@
+/*
+ * Team Knowledge
+ * SP21 Game 2 [Fast Food]
+ * Spawner for food objects
+ */
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,16 +10,17 @@ using UnityEngine;
 public class FoodSpawner : MonoBehaviour
 {
     public GameObject[] foodOptions;
+    public Vector3[] spawnOptions;
 
-    public int minWaveSpawn = 1;
-    public int maxWaveSpawn = 3;
+    public int minWaveSpawn = 0;
+    public int maxWaveSpawn = 2;
 
     public float delay;
 
     // set minor 2 second delay before starting system
     private void Awake()
     {
-        StartCoroutine(NextWave(2f));
+        StartCoroutine(NextWave(0.5f));
     }
 
     public void SpawnNextWave()
@@ -23,10 +29,10 @@ public class FoodSpawner : MonoBehaviour
         int obsQuantity = Random.Range(minWaveSpawn, maxWaveSpawn);
         List<int> selectedObj = new List<int>();
 
-        // select however many obstacles to spawn
+        // select however many spawn positions to spawn
         for (int i = 0; i <= obsQuantity; i++)
         {
-            int temp = Random.Range(0, foodOptions.Length);
+            int temp = Random.Range(0, spawnOptions.Length);
 
             // ensure no duplicates but count is still reached
             if (selectedObj.Contains(temp))
@@ -36,9 +42,12 @@ public class FoodSpawner : MonoBehaviour
         }
 
         // spawn the objects
-        foreach (int obj in selectedObj)
+        foreach (int pos in selectedObj)
         {
-            Instantiate(foodOptions[obj], foodOptions[obj].transform.position, foodOptions[obj].transform.rotation);
+            // select a random food
+            int obj = Random.Range(0, foodOptions.Length);
+            // spawn random food at predetermined points
+            Instantiate(foodOptions[obj], spawnOptions[pos], foodOptions[obj].transform.rotation);
         }
 
         // Set a delay until the next wave of obstacles
@@ -52,20 +61,12 @@ public class FoodSpawner : MonoBehaviour
         SpawnNextWave();
     }
 
-    public void SetDifficulty(int minObs, int maxObs, float _delay)
+    public void ModFoodDelay(float _delay)
     {
-        minWaveSpawn += minObs;
-        maxWaveSpawn += maxObs;
         delay += _delay;
 
         // ensure atleast 1 second delay between objects
-        if (delay < 1.1f)
-            delay = 1.1f;
-
-        // ensure it can only spawn a max of 5 and min of 4 for balance
-        if (minWaveSpawn > 4)
-            minWaveSpawn = 4;
-        if (maxWaveSpawn > 5)
-            maxWaveSpawn = 5;
+        if (delay < 1.25f)
+            delay = 1.25f;
     }
 }

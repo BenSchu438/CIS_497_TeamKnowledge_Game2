@@ -1,3 +1,8 @@
+/*
+ * Team Knowledge
+ * SP21 Game 2 [Fast Food]
+ * Lane system
+ */
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

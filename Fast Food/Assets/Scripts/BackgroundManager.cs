@@ -1,3 +1,8 @@
+/*
+ * Team Knowledge
+ * SP21 Game 2 [Fast Food]
+ * manager for background objects
+ */
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

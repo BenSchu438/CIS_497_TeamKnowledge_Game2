@@ -1,3 +1,8 @@
+/*
+ * Team Knowledge
+ * SP21 Game 2 [Fast Food]
+ * Health system for player
+ */
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +12,8 @@ public class HealthBar : MonoBehaviour
 {
     public Slider healthBar;
     public int damage;
+    public float IframeTime;
+    public bool damageable = true;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +36,7 @@ public class HealthBar : MonoBehaviour
     public void HealthDrop()
     {
         healthBar.value -= damage;
+        StartCoroutine(Iframe());
     }
 
     public void HealthRestore()
@@ -39,5 +47,14 @@ public class HealthBar : MonoBehaviour
     public void ChangeHealthBar(int value)
     {
         healthBar.value += value;
+        StartCoroutine(Iframe());
+
+    }
+
+    IEnumerator Iframe()
+    {
+        damageable = false;
+        yield return new WaitForSeconds(IframeTime);
+        damageable = true;
     }
 }
