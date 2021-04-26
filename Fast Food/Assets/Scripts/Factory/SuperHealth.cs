@@ -6,8 +6,8 @@ public class SuperHealth : Food
 {
     public override void PrepFood()
     {
-        transform.position = new Vector3(spawnPoint.x, 2.6f, spawnPoint.z);
+        transform.position = new Vector3(spawnPoint.x, .75f, spawnPoint.z);
 
-        transform.localScale = new Vector3(transform.localScale.x, 3.8f, transform.localScale.z);
+        transform.localScale = new Vector3(transform.localScale.x, 1.5f, transform.localScale.z);
     }
 }

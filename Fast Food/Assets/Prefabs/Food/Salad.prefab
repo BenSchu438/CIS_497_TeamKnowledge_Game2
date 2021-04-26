@@ -97,6 +97,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   staminaIncrease: 10
   scoreDeduct: 0
+  spawnPoint: {x: 0, y: 0, z: 95}
+  zResetPoint: -8
 --- !u!65 &5917354171564692058
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -105,7 +107,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000011262040222}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.14453673, y: 0.15990265, z: 0.011993179}
