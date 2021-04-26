@@ -1,14 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public abstract class Food : MonoBehaviour
 {
     public int staminaIncrease = 10;
-    public int scoreDeduct = 0;
+    public int healthChange = 0;
     public Vector3 spawnPoint;
     public float zResetPoint;
-
+    public int random;
+    public Slider staminaBar;
+    public Slider healthBar;
 
     private void Awake()
     {
@@ -17,6 +21,7 @@ public abstract class Food : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
+        staminaBar.value += staminaIncrease;
         Destroy(this.gameObject);
     }
 
