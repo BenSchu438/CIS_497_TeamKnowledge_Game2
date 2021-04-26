@@ -7,6 +7,9 @@ TagManager:
   - Obstacle
   - Ground
   - BackgroundTheme
+  - Super
+  - Norm
+  - Weak
   layers:
   - Default
   - TransparentFX
