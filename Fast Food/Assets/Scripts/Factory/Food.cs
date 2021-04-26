@@ -21,7 +21,6 @@ public abstract class Food : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        staminaBar.value += staminaIncrease;
         Destroy(this.gameObject);
     }
 

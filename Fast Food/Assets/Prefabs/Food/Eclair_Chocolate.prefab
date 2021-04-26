@@ -101,6 +101,7 @@ MonoBehaviour:
   zResetPoint: -8
   random: 0
   staminaBar: {fileID: 0}
+  healthBar: {fileID: 0}
 --- !u!65 &927396403133386302
 BoxCollider:
   m_ObjectHideFlags: 0
