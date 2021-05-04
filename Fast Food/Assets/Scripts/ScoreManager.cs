@@ -32,7 +32,7 @@ public class ScoreManager : MonoBehaviour
         while(true)
         {
             GameManager.instance.score += 1 * GameManager.instance.speed;
-            scoreText.text = "Score: " + GameManager.instance.score;
+            scoreText.text = "Calories Burned: " + GameManager.instance.score;
             difficultyIncrement = GameManager.instance.score / difficultyMilestone;
 
             // check if milestone reached for difficulty increase

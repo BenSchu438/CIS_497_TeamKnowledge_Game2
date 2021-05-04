@@ -2,7 +2,6 @@
  * Spring 2021 Group Game 2
  * Singleton Game Manager
  */
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -115,9 +114,12 @@ public class GameManager : MonoBehaviour
     // call when game over is triggered
     public void GameOver()
     {
-        gameOver = true;
-        Time.timeScale = 0f;
-        finalScore.text = "Score: " + score;
-        gameOverScreen.SetActive(true);
+        if(CurrentLevelName == "Level1")
+        {
+            gameOver = true;
+            Time.timeScale = 0f;
+            finalScore.text = "Score: " + score;
+            gameOverScreen.SetActive(true);
+        }
     }
 }

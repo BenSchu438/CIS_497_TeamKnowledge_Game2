@@ -12,8 +12,8 @@ public class FoodSpawner : MonoBehaviour
     public GameObject[] foodOptions;
     public Vector3[] spawnOptions;
 
-    public int minWaveSpawn = 0;
-    public int maxWaveSpawn = 2;
+    public int minWaveSpawn;
+    public int maxWaveSpawn;
 
     public float delay;
 

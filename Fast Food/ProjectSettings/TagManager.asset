@@ -12,6 +12,7 @@ TagManager:
   - Weak
   - HealthBar
   - StaminaBar
+  - TutText
   layers:
   - Default
   - TransparentFX
