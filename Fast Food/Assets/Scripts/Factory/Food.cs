@@ -18,7 +18,7 @@ public abstract class Food : MonoBehaviour
     //public int random;
     private Slider staminaBar;
     private GameObject healthBar;
-    private HealthBar healthBarScript;
+    protected HealthBar healthBarScript;
     private StaminaBar staminaBarScript;
 
 
@@ -29,7 +29,7 @@ public abstract class Food : MonoBehaviour
         staminaBarScript = GameObject.FindGameObjectWithTag("StaminaBar").GetComponent<StaminaBar>();
     }
 
-    public void OnTriggerEnter(Collider other)
+    public virtual void OnTriggerEnter(Collider other)
     {
         healthBarScript.ChangeHealthBar(healthChange);
         staminaBarScript.ChangeStaminaBar(staminaIncrease);

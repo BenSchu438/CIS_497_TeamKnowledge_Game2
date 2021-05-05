@@ -63,14 +63,14 @@ public class ObstacleSpawner : MonoBehaviour
         maxWaveSpawn += maxObs;
         delay += _delay;
 
-        // ensure atleast 1 second delay between objects
-        if (delay < 1.25f)
-            delay = 1.25f;
+        // ensure atleast 1.4 second delay between objects
+        if (delay < 1.4f)
+            delay = 1.4f;
 
-        // ensure it can only spawn a max of 5 and min of 4 for balance
-        if (minWaveSpawn > 4)
+        // ensure it can only spawn a max of 5 and min of 3 for balance
+        if (minWaveSpawn >= 3)
             minWaveSpawn = 3;
-        if (maxWaveSpawn > 5)
+        if (maxWaveSpawn >= 5)
             maxWaveSpawn = 5;
     }
 }

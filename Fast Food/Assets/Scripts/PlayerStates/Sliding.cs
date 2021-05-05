@@ -23,7 +23,7 @@ public class Sliding : MonoBehaviour, IState
         PlayerController.sliding = false;
         GetComponent<Renderer>().material = p.defMat;
         transform.localScale += new Vector3(0, p.slideHeight, 0);
-        transform.position = new Vector3(transform.position.x, 1f, transform.position.z);
+        transform.position = new Vector3(transform.position.x, 0.8f, transform.position.z);
         //rb.velocity = new Vector3(0, 0, 0);
 
         // jump

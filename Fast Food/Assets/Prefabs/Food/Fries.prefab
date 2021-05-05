@@ -97,7 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPoint: {x: 0, y: 0, z: 95}
   zResetPoint: -8
-  stamina: 15
+  stamina: 12
   health: -15
 --- !u!65 &1137101657040777018
 BoxCollider:

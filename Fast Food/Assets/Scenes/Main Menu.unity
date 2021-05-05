@@ -238,7 +238,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 208.5792, y: -56.191803}
+  m_AnchoredPosition: {x: 208.5792, y: -53.0903}
   m_SizeDelta: {x: 160, y: 80.5512}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &37704721
@@ -476,7 +476,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 208.5792, y: -350.20462}
+  m_AnchoredPosition: {x: 208.5792, y: -353.3061}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &102022659
@@ -758,7 +758,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Controls
+  m_Text: 'How to Play
+
+    [Controls]'
 --- !u!222 &209296506
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -804,7 +806,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 160, y: 44.2982}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &275610966
 MonoBehaviour:
@@ -1123,7 +1125,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 160, y: 40.4865}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &449809257
 MonoBehaviour:
@@ -1277,7 +1279,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 208.5792, y: -148.6517}
+  m_AnchoredPosition: {x: 208.5792, y: -139.34721}
   m_SizeDelta: {x: 184.417, y: 40.7038}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &459553410
@@ -1658,7 +1660,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Start
+  m_Text: 'Go out for a snack!
+
+    [Play]'
 --- !u!222 &553842436
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1702,7 +1706,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 208.5792, y: -221.18791}
-  m_SizeDelta: {x: 184.417, y: 40.7038}
+  m_SizeDelta: {x: 184.417, y: 71.7188}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &665054349
 MonoBehaviour:
@@ -1726,18 +1730,18 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 30
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 2
+    m_MinSize: 1
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Score: '
+  m_Text: "Calories Burned : \nJunk Food Eaten : \n\nFinal Score : "
 --- !u!222 &665054350
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1782,7 +1786,7 @@ MonoBehaviour:
   speed: 18
   score: 0
   minSpeed: 18
-  maxSpeed: 30
+  maxSpeed: 27
   finalScore: {fileID: 665054349}
 --- !u!4 &759855441
 Transform:
@@ -2094,7 +2098,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 208.5792, y: -288.37222}
+  m_AnchoredPosition: {x: 208.5792, y: -297.6767}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &855721003
@@ -2652,7 +2656,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 160, y: 46.6555}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1268739299
 MonoBehaviour:
@@ -3724,7 +3728,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Play Tutorial
+  m_Text: "Practice \n[Tutorial]"
 --- !u!222 &2117215218
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3828,7 +3832,7 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 0
+    m_Top: 30
     m_Bottom: 0
   m_ChildAlignment: 4
   m_Spacing: 0

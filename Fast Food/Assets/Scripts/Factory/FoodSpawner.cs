@@ -20,7 +20,7 @@ public class FoodSpawner : MonoBehaviour
     // set minor 2 second delay before starting system
     private void Awake()
     {
-        StartCoroutine(NextWave(0.5f));
+        StartCoroutine(NextWave(0.4f));
     }
 
     public void SpawnNextWave()
@@ -65,8 +65,8 @@ public class FoodSpawner : MonoBehaviour
     {
         delay += _delay;
 
-        // ensure atleast 1 second delay between objects
-        if (delay < 1.25f)
-            delay = 1.25f;
+        // ensure atleast 1.4 second delay between objects
+        if (delay < 1.4f)
+            delay = 1.4f;
     }
 }

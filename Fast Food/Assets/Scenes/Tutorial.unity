@@ -182,7 +182,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 24
+    m_FontSize: 20
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 2
@@ -193,9 +193,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Eat food to manage your stamina! \nNo Stamina = Game Over \n-Healthy food
-    heals health, stamina\n-Junk food damages health, more stamina\nTry eating 5
-    foods!"
+  m_Text: "Eat food to manage your stamina! No Stamina = Game Over \nHealthy :\n+Restore
+    Stamina, Health\nJunk : \n+Restore more Stamina\n-Damages health\n-Damage increases
+    over time\nTry eating 5 foods!"
 --- !u!222 &33487327
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1314,7 +1314,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   laneChangeTime: 0.22
   currentLane: {fileID: 107666081}
-  jumpForce: 1200
+  jumpForce: 1050
   gravityModifier: 4
   slideDuration: 0.6
   slideHeight: 0.5

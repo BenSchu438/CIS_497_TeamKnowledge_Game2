@@ -118,7 +118,21 @@ public class GameManager : MonoBehaviour
         {
             gameOver = true;
             Time.timeScale = 0f;
-            finalScore.text = "Score: " + score;
+
+            // Calculate final score
+            int fscore = score - (75 * HealthBar.GetFinalJunkCount());
+
+            if(fscore <= 0)
+            {
+                finalScore.text = "Calories Burned : " + score +
+                "\nJunk Food Eaten : -75 x " + HealthBar.GetFinalJunkCount() +
+                "\n\nFinal Score : " + 0;
+            }
+            else
+                finalScore.text = "Calories Burned : " + score +
+                "\nJunk Food Eaten : -75 x " + HealthBar.GetFinalJunkCount() +
+                "\n\nFinal Score : " + fscore;
+
             gameOverScreen.SetActive(true);
         }
     }
