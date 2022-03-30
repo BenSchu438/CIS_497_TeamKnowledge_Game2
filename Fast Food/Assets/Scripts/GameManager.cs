@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public static string CurrentLevelName = "MainMenu";
 
+    public int theme = 0;
 
     // create singleton instance
     private void Awake()

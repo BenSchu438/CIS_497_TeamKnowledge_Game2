@@ -10,7 +10,10 @@ using UnityEngine;
 public class BackgroundManager : MonoBehaviour, ISubject
 {
     public List<IObserver> backgroundObjects;
-    
+
+
+    private GameManager gm; 
+
     // inclusive!
     public int maxThemes;
     private int currentTheme = 0;
@@ -20,6 +23,8 @@ public class BackgroundManager : MonoBehaviour, ISubject
     private void Start()
     {
         backgroundObjects = new List<IObserver>();
+
+        gm = GameManager.instance;
 
         GameObject[] temp = GameObject.FindGameObjectsWithTag("BackgroundTheme");
 
@@ -43,6 +48,7 @@ public class BackgroundManager : MonoBehaviour, ISubject
             currentTheme++;
             if (currentTheme == maxThemes)
                 currentTheme = 0;
+            gm.theme = currentTheme;
 
             // send new theme to all observers
             foreach (IObserver bg in backgroundObjects)

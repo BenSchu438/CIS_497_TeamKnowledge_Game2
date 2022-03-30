@@ -14,9 +14,17 @@ public abstract class Obstacle : MonoBehaviour
     public Vector3 spawnPoint;
     public float zResetPoint;
 
+    public GameObject[] themes;
+
     private void Awake()
     {
         PrepObs();
+
+        foreach (GameObject obj in themes)
+            obj.SetActive(false);
+
+        // activate selected theme
+        themes[GameManager.instance.theme].SetActive(true);
     }
 
     private void FixedUpdate()

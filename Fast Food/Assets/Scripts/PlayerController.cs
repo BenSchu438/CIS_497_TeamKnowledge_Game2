@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour
 
     [Header("Healthbar Ref")]
     public HealthBar health;
+    public float iframe;
+    private bool immune;
     [Space(5)]
 
     [SerializeField] public IState currentState;
@@ -40,10 +42,13 @@ public class PlayerController : MonoBehaviour
     public IState jump;
 
     public Rigidbody playerRb;
+    private Animator ani;
 
     private void Awake()
     {
         playerRb = this.gameObject.GetComponent<Rigidbody>();
+        immune = false;
+        ani = GetComponentInChildren<Animator>(true);
 
         if (Physics.gravity.y > -10)
             Physics.gravity *= gravityModifier;
@@ -84,6 +89,8 @@ public class PlayerController : MonoBehaviour
         else if((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space)))
         {
             currentState.Jump();
+            ani.SetTrigger("Jump");
+            ani.SetBool("Grounded", false);
         }
         // slide if possiblew/ s or left control
         else if ((Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.LeftControl)))
@@ -94,9 +101,9 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Obstacle"))
+        if (other.CompareTag("Obstacle") && !immune)
         {
-            Debug.Log("Hit Obstacle");
+            StartCoroutine(Iframe());
             health.HealthDrop();
         }
     }
@@ -106,7 +113,14 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground") && currentState == jump)
         {
             currentState = running;
-        }
-            
+            ani.SetBool("Grounded", true);
+        }       
+    }
+
+    private IEnumerator Iframe()
+    {
+        immune = true;
+        yield return new WaitForSeconds(iframe);
+        immune = false;
     }
 }

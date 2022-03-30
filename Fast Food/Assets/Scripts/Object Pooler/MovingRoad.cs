@@ -15,7 +15,7 @@ public class MovingRoad : MonoBehaviour
     public float lanePos;
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         transform.Translate(transform.forward * GameManager.instance.speed * -1 * Time.deltaTime);
 
